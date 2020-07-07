@@ -1,18 +1,28 @@
 import React from "react";
 import logo from "../../assets/logo-nav.png";
 import searchIcon from "../../assets/ic-search-copy.png";
+import { connect } from "react-redux";
+import { toggleSearchBar } from "../../redux/actions/homeActions";
+
 import "./style.css";
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   render() {
+    const { showSearchBar, toggleSearchBar } = this.props;
     return (
       <div className="home">
         <div className="navbar">
-          <img className="navbar__logo" src={logo} alt="Logo da ioasys" />
+          {!showSearchBar && (
+            <img className="navbar__logo" src={logo} alt="Logo da ioasys" />
+          )}
+
           <img
             className="navbar__search-icon"
             src={searchIcon}
             alt="pesquisar"
+            onClick={() => {
+              toggleSearchBar();
+            }}
           />
         </div>
         <div className="content">
@@ -24,3 +34,15 @@ export default class Home extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return { ...state };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleSearchBar: () => dispatch(toggleSearchBar()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
