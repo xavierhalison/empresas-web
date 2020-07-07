@@ -15,9 +15,17 @@ class Home extends React.Component {
           {!showSearchBar && (
             <img className="navbar__logo" src={logo} alt="Logo da ioasys" />
           )}
-
+          {showSearchBar && (
+            <input
+              className="navbar__search-bar"
+              placeholder="Pesquisar"
+              type="text"
+            />
+          )}
           <img
-            className="navbar__search-icon"
+            className={`navbar__search-icon navbar__search-icon--${
+              showSearchBar ? "align-left" : "align-right"
+            }`}
             src={searchIcon}
             alt="pesquisar"
             onClick={() => {
