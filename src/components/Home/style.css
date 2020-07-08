@@ -15,51 +15,6 @@ body {
   flex-direction: column;
 }
 
-.navbar {
-  height: 75.5px;
-  background-color: #ee4c77;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.navbar__logo {
-  height: 28.5px;
-  width: 117.1px;
-  align-self: center;
-}
-
-.navbar__search-icon {
-  height: 30px;
-  width: 30px;
-  align-self: center;
-  position: absolute;
-}
-
-.navbar__search-icon--align-right {
-  right: 20px;
-}
-
-.navbar__search-icon--align-left {
-  left: 20px;
-}
-
-.navbar__search-bar {
-  width: 100%;
-  margin: 15px 20.9px 11px 21px;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid white;
-  outline: none;
-  font-size: 17px;
-  color: white;
-  padding: 0 0 0 30px;
-}
-
-.navbar__search-bar::placeholder {
-  color: #991237;
-}
-
 .content {
   display: flex;
   justify-content: center;
