@@ -1,20 +1,3 @@
-* {
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-body {
-  padding: 0;
-  margin: 0;
-}
-
-.home {
-  background-color: #ebe9d7;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 .content {
   display: flex;
   justify-content: center;
