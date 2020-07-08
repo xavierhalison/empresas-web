@@ -1,8 +1,14 @@
-import { TOGGLE_SEARCH_BAR, SEARCH_STRING } from "../actions/types";
+import {
+  TOGGLE_SEARCH_BAR,
+  SEARCH_STRING,
+  GO_TO_COMPANY_SCREEN,
+} from "../actions/types";
 
 const initialState = {
   showSearchBar: false,
   searchResults: [],
+  showCompanyScreen: false,
+  company: {},
 };
 
 const homeReducer = (state = initialState, action) => {
@@ -11,13 +17,23 @@ const homeReducer = (state = initialState, action) => {
       return { ...state, showSearchBar: !state.showSearchBar };
     case SEARCH_STRING:
       let res = [];
-      console.log(action.payload.str);
       if (action.payload.str === "") {
         res = [];
       } else {
         res = ["teste"];
       }
       return { ...state, searchResults: res };
+    case GO_TO_COMPANY_SCREEN:
+      return {
+        ...state,
+        showCompanyScreen: true,
+        company: {
+          name: "Empresa",
+          img: "teste",
+          text:
+            "lorem ipsum dolor sit amet consectetur adipiscing elit sed doeiusmod tempor incididunt ut labore et",
+        },
+      };
     default:
       return state;
   }

@@ -1,15 +1,27 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import Company from "./components/Company";
 import Home from "./components/Home";
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="app">
-      <Navbar />
-      <Home />
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    const { showCompanyScreen } = this.props;
+    return (
+      <div className="app">
+        <Navbar />
+        {!showCompanyScreen && <Home />}
+        {showCompanyScreen && <Company />}
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    showCompanyScreen: state.showCompanyScreen,
+  };
+};
+
+export default connect(mapStateToProps, null)(App);

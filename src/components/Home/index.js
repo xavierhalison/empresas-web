@@ -1,8 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import "./style.css";
 
+import { goToCompanyScreen } from "../../redux/actions/homeActions";
+
 class Home extends React.Component {
+  handleCompanySelection() {
+    const { goToCompanyScreen } = this.props;
+    goToCompanyScreen("Empresa", "img", "text");
+  }
   render() {
     const { searchResults } = this.props;
     return (
@@ -14,7 +21,12 @@ class Home extends React.Component {
         )}
         {searchResults.length > 0 && (
           <div className="content__list">
-            <div className="content__single-result">
+            <div
+              className="content__single-result"
+              onClick={() => {
+                this.handleCompanySelection();
+              }}
+            >
               <div className="content__result-img"></div>
               <div className="content__result-info">
                 <h3 className="content__result-name">Empresa1</h3>
@@ -33,4 +45,11 @@ const mapStateToProps = (state) => {
   return { searchResults: state.searchResults };
 };
 
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    goToCompanyScreen: (name, img, text) =>
+      dispatch(goToCompanyScreen(name, img, text)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
