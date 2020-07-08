@@ -1,1 +1,2 @@
 export const TOGGLE_SEARCH_BAR = "TOGGLE_SEARCH_BAR";
+export const SEARCH_STRING = "SEARCH_STRING";
