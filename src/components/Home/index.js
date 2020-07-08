@@ -42,7 +42,8 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { searchResults: state.searchResults };
+  const { home } = state;
+  return { searchResults: home.searchResults };
 };
 
 const mapDispatchToProps = (dispatch) => {

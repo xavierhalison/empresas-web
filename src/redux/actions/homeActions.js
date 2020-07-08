@@ -2,7 +2,6 @@ import {
   TOGGLE_SEARCH_BAR,
   SEARCH_STRING,
   GO_TO_COMPANY_SCREEN,
-  SIGN_IN,
 } from "./types";
 
 export const toggleSearchBar = () => ({
@@ -23,8 +22,4 @@ export const goToCompanyScreen = (name, img, text) => ({
     img: img,
     text: text,
   },
-});
-
-export const signIn = () => ({
-  type: SIGN_IN,
 });

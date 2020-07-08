@@ -3,12 +3,21 @@ import logo from "../../assets/logo-home.png";
 import mail from "../../assets/ic-email.svg";
 import locker from "../../assets/ic-cadeado.svg";
 import "./style.css";
-import { connect } from "react-redux";
-import { signIn } from "../../redux/actions/homeActions";
+import { signIn } from "../../services/auth";
 
-class Auth extends React.Component {
+export default class Auth extends React.Component {
+  constructor(props) {
+    super(props);
+    this.mailFieldRef = React.createRef();
+    this.passwordFieldRef = React.createRef();
+  }
+  submitHandler() {
+    const mail = this.mailFieldRef.current.value;
+    const password = this.passwordFieldRef.current.value;
+    signIn(mail, password);
+  }
+
   render() {
-    const { signIn } = this.props;
     return (
       <div className="auth">
         <img className="auth__logo" src={logo} alt="logo" />
@@ -28,6 +37,8 @@ class Auth extends React.Component {
               placeholder="E-mail"
               className="auth__field auth__field--mail"
               type="email"
+              ref={this.mailFieldRef}
+              required
             />
           </div>
           <div className="auth__single-field">
@@ -40,12 +51,13 @@ class Auth extends React.Component {
               placeholder="Senha"
               className="auth__field auth__field--password"
               type="password"
+              ref={this.passwordFieldRef}
             />
           </div>
         </div>
         <button
           onClick={() => {
-            signIn();
+            this.submitHandler();
           }}
           className="auth__submit"
         >
@@ -55,11 +67,3 @@ class Auth extends React.Component {
     );
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signIn: () => dispatch(signIn()),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Auth);
