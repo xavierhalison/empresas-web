@@ -4,8 +4,9 @@ import mail from "../../assets/ic-email.svg";
 import locker from "../../assets/ic-cadeado.svg";
 import "./style.css";
 import { signIn } from "../../services/auth";
+import { connect } from "react-redux";
 
-export default class Auth extends React.Component {
+class Auth extends React.Component {
   constructor(props) {
     super(props);
     this.mailFieldRef = React.createRef();
@@ -18,6 +19,8 @@ export default class Auth extends React.Component {
   }
 
   render() {
+    const { errorMessage, signInFailed } = this.props.auth;
+
     return (
       <div className="auth">
         <img className="auth__logo" src={logo} alt="logo" />
@@ -40,6 +43,7 @@ export default class Auth extends React.Component {
               ref={this.mailFieldRef}
               required
             />
+            {signInFailed && <span className="auth__error-tip">!</span>}
           </div>
           <div className="auth__single-field">
             <img
@@ -53,7 +57,11 @@ export default class Auth extends React.Component {
               type="password"
               ref={this.passwordFieldRef}
             />
+            {signInFailed && <span className="auth__error-tip">!</span>}
           </div>
+        </div>
+        <div className="auth__error">
+          {signInFailed && <span>{errorMessage}</span>}
         </div>
         <button
           onClick={() => {
@@ -67,3 +75,12 @@ export default class Auth extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const { auth } = state;
+  return {
+    auth: auth,
+  };
+};
+
+export default connect(mapStateToProps, null)(Auth);

@@ -42,14 +42,17 @@
   width: auto;
   width: 175.5px;
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .auth__icon {
   width: 13px;
   height: 13px;
   position: relative;
-  left: 15px;
-  top: 3px;
+  left: 22px;
+  top: 11px;
 }
 
 .auth__field {
@@ -59,8 +62,11 @@
   outline: none;
   border-bottom: 1px solid #383743;
   font-size: 9px;
-  margin-bottom: 21.3px;
   padding: 0 0 3.9px 22.7px;
+}
+
+.auth__field--mail {
+  margin-bottom: 5.3px;
 }
 
 .auth__submit {
@@ -73,4 +79,23 @@
   font-size: 9px;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.auth__error {
+  font-size: 6.1px;
+  color: #ff0f44;
+  margin: 10px;
+}
+
+.auth__error-tip {
+  background-color: red;
+  width: 11.5px;
+  height: 12px;
+  border-radius: 100%;
+  position: absolute;
+  font-size: 8px;
+  text-align: center;
+  color: white;
+  right: 25px;
+  top: 10px;
 }
