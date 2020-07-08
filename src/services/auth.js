@@ -21,6 +21,7 @@ export const signIn = (mail, password) => {
       const { client, uid } = headers;
 
       store.dispatch(storeAuth(accessToken, client, uid));
+      console.log(accessToken, client, uid);
       store.dispatch(toggleLoading());
     })
     .catch((err) => {

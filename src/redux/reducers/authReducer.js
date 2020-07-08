@@ -1,10 +1,10 @@
 import { STORE_AUTH, SIGNIN_ERROR, TOGGLE_LOADING } from "../actions/types";
 
 const initialState = {
-  isLogged: false,
-  accessToken: "",
-  client: "",
-  uid: "",
+  isLogged: true,
+  accessToken: "oMwJGWIY6HNEf4dw1hoXRQ",
+  client: "-3KdhFHoisJubAKYwTfwnQ",
+  uid: "testeapple@ioasys.com.br",
   signInFailed: false,
   errorMessage: "",
   showLoading: false,

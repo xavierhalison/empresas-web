@@ -10,7 +10,6 @@ class Navbar extends React.Component {
     const str = e.target.value;
     const { searchString, searchResults } = this.props;
     searchString(str);
-    console.log(searchResults);
   };
 
   render() {
@@ -46,8 +45,9 @@ class Navbar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  const { home } = state;
   return {
-    showSearchBar: state.showSearchBar,
+    showSearchBar: home.showSearchBar,
   };
 };
 
