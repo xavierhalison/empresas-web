@@ -3,9 +3,12 @@ import logo from "../../assets/logo-home.png";
 import mail from "../../assets/ic-email.svg";
 import locker from "../../assets/ic-cadeado.svg";
 import "./style.css";
+import { connect } from "react-redux";
+import { signIn } from "../../redux/actions/homeActions";
 
-export default class Auth extends React.Component {
+class Auth extends React.Component {
   render() {
+    const { signIn } = this.props;
     return (
       <div className="auth">
         <img className="auth__logo" src={logo} alt="logo" />
@@ -40,8 +43,23 @@ export default class Auth extends React.Component {
             />
           </div>
         </div>
-        <button className="auth__submit">Entrar</button>
+        <button
+          onClick={() => {
+            signIn();
+          }}
+          className="auth__submit"
+        >
+          Entrar
+        </button>
       </div>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: () => dispatch(signIn()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Auth);
