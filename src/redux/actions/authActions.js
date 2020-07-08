@@ -1,4 +1,4 @@
-import { STORE_AUTH, SIGNIN_ERROR } from "./types";
+import { STORE_AUTH, SIGNIN_ERROR, TOGGLE_LOADING } from "./types";
 
 export const storeAuth = (accessToken, client, uid) => ({
   type: STORE_AUTH,
@@ -14,4 +14,8 @@ export const signInError = (msg) => ({
   payload: {
     errorMessage: msg,
   },
+});
+
+export const toggleLoading = () => ({
+  type: TOGGLE_LOADING,
 });

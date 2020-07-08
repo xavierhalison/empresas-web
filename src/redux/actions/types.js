@@ -4,3 +4,4 @@ export const GO_TO_COMPANY_SCREEN = "SEARCH_STRING";
 
 export const STORE_AUTH = "SEARCH_STRING";
 export const SIGNIN_ERROR = "SIGNIN_ERROR";
+export const TOGGLE_LOADING = "TOGGLE_LOADING";

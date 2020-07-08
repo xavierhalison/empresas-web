@@ -1,4 +1,4 @@
-import { STORE_AUTH, SIGNIN_ERROR } from "../actions/types";
+import { STORE_AUTH, SIGNIN_ERROR, TOGGLE_LOADING } from "../actions/types";
 
 const initialState = {
   isLogged: false,
@@ -7,6 +7,7 @@ const initialState = {
   uid: "",
   signInFailed: false,
   errorMessage: "",
+  showLoading: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -25,7 +26,10 @@ const authReducer = (state = initialState, action) => {
     case SIGNIN_ERROR:
       const { errorMessage } = action.payload;
 
-      return { state, signInFailed: true, errorMessage: errorMessage };
+      return { ...state, signInFailed: true, errorMessage: errorMessage };
+
+    case TOGGLE_LOADING:
+      return { ...state, showLoading: !state.showLoading };
 
     default:
       return state;

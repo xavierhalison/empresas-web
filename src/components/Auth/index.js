@@ -19,10 +19,11 @@ class Auth extends React.Component {
   }
 
   render() {
-    const { errorMessage, signInFailed } = this.props.auth;
+    const { errorMessage, signInFailed, showLoading } = this.props.auth;
 
     return (
       <div className="auth">
+        {showLoading && <div>loading</div>}
         <img className="auth__logo" src={logo} alt="logo" />
         <h3 className="auth__welcome">Bem vindo ao empresas</h3>
         <p className="auth__text">
