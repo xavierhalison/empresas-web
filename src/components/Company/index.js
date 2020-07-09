@@ -4,15 +4,16 @@ import "./style.css";
 
 class Company extends React.Component {
   render() {
+    const { company } = this.props;
+    const { enterprise_name, description } = company;
+    const capitalLetter = enterprise_name[0];
+
     return (
       <div className="company">
         <div className="card">
-          <div className="card__img"></div>
+          <div className="card__img">{capitalLetter}</div>
           <div className="card__text">
-            <p>
-              lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-              eiusmod tempor incididunt ut labore et
-            </p>
+            <p>{description}</p>
           </div>
         </div>
       </div>
@@ -21,7 +22,10 @@ class Company extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { ...state };
+  const { company } = state;
+  return {
+    company: company.selectedCompany,
+  };
 };
 
 export default connect(mapStateToProps, null)(Company);

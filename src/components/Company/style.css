@@ -1,6 +1,7 @@
 .company {
   padding: 22px 25px 21.5px 25px;
   height: 100%;
+  overflow: auto;
 }
 
 .card {
@@ -9,13 +10,21 @@
   height: 95%;
   border-radius: 2.4px;
   padding: 24px 37.5px 0 36.5px;
+  overflow: auto;
 }
 
 .card__img {
   width: 100%;
   height: 147.5px;
-  background-color: yellowgreen;
+  background-color: #7dc074;
   margin-bottom: 24.5px;
+  font-size: 60px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card__text {

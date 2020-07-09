@@ -25,10 +25,10 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { home, auth } = state;
+  const { auth, company } = state;
   return {
     isLogged: auth.isLogged,
-    showCompanyScreen: home.showCompanyScreen,
+    showCompanyScreen: company.showCompanyScreen,
   };
 };
 

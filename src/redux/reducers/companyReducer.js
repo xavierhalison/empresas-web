@@ -1,9 +1,15 @@
-import { LOAD_COMPANIES, SEARCH_COMPANY } from "../actions/types";
+import {
+  LOAD_COMPANIES,
+  SEARCH_COMPANY,
+  SELECT_COMPANY,
+} from "../actions/types";
 
 const initialState = {
   companies: [],
   filteredCompanies: [],
   queryLength: 0,
+  selectedCompany: {},
+  showCompanyScreen: false,
 };
 
 const homeReducer = (state = initialState, action) => {
@@ -26,6 +32,14 @@ const homeReducer = (state = initialState, action) => {
       }
 
       return { ...state, filteredCompanies: filter, queryLength: query.length };
+    }
+    case SELECT_COMPANY: {
+      const { company } = action.payload;
+      return {
+        ...state,
+        selectedCompany: { ...company },
+        showCompanyScreen: true,
+      };
     }
     default:
       return state;

@@ -3,15 +3,18 @@ import { connect } from "react-redux";
 
 import "./style.css";
 
-import { goToCompanyScreen } from "../../redux/actions/homeActions";
-
-import { getCompanies } from "../../services/company";
+import { getCompanies, getCompany } from "../../services/company";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     getCompanies();
   }
+
+  handleCompanySelection(id) {
+    getCompany(id);
+  }
+
   render() {
     const { onSearch, searchResults, queryLength } = this.props;
     return (
@@ -23,13 +26,17 @@ class Home extends React.Component {
         )}
         {searchResults.length > 0 && (
           <div className="content__list">
-            {searchResults.map((company, key) => {
-              const { enterprise_name, country } = company;
+            {searchResults.map((company) => {
+              const { enterprise_name, country, id } = company;
               const type = company.enterprise_type.enterprise_type_name;
               const capitalLetter = enterprise_name[0];
 
               return (
-                <div key={key} className="content__single-result">
+                <div
+                  key={id}
+                  className="content__single-result"
+                  onClick={() => this.handleCompanySelection(id)}
+                >
                   <div className="content__result-img">{capitalLetter}</div>
                   <div className="content__result-info">
                     <h3 className="content__result-name">{enterprise_name}</h3>
@@ -55,7 +62,6 @@ const mapStateToProps = (state) => {
   const { company, home } = state;
   return {
     searchResults: company.filteredCompanies,
-    companies: company.companies,
     onSearch: home.showSearchBar,
     queryLength: company.queryLength,
   };
@@ -63,8 +69,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    goToCompanyScreen: (name, img, text) =>
-      dispatch(goToCompanyScreen(name, img, text)),
+    // goToCompanyScreen: (name, img, text) =>
+    //   dispatch(goToCompanyScreen(name, img, text)),
   };
 };
 
