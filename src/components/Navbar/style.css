@@ -59,9 +59,7 @@
 
 .navbar__back-to-home {
   color: white;
-  font-size: 10px;
-  text-transform: uppercase;
-  margin: 0 34px 17px 27.5px;
+  margin: 0 34px 14px 27.5px;
   align-self: flex-end;
-  margin-bottom: 17px;
+  cursor: pointer;
 }

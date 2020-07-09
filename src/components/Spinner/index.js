@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 
-export const Spinner = () => {
+const Spinner = () => {
   return (
     <div className="loading-screen">
       <svg
@@ -24,3 +24,5 @@ export const Spinner = () => {
     </div>
   );
 };
+
+export default Spinner;

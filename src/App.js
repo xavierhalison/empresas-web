@@ -1,18 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import "./App.css";
+
 import Navbar from "./components/Navbar";
 import Company from "./components/Company";
 import Home from "./components/Home";
 import Auth from "./components/Auth";
-import { connect } from "react-redux";
-import { Spinner } from "./components/Spinner";
 
 class App extends React.Component {
   render() {
     const { isLogged, showCompanyScreen } = this.props;
     return (
       <div className="app">
-        <Spinner />
         {!isLogged && <Auth />}
         {isLogged && (
           <React.Fragment>

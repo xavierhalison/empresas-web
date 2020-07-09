@@ -10,6 +10,10 @@ import { toggleSearchBar } from "../../redux/actions/homeActions";
 import { searchCompany, backToHome } from "../../redux/actions/companyActions";
 
 class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.searchFieldRef = React.createRef();
+  }
   handleSearch = (e) => {
     const str = e.target.value;
     const { searchCompany } = this.props;
@@ -43,6 +47,7 @@ class Navbar extends React.Component {
             className="navbar__search-bar"
             placeholder="Pesquisar"
             type="text"
+            ref={this.searchFieldRef}
             onKeyUp={(e) => {
               this.handleSearch(e);
             }}
@@ -62,14 +67,14 @@ class Navbar extends React.Component {
         )}
         {showCompanyScreen && (
           <div className="navbar__company">
-            <span
-              className="navbar__back-to-home"
+            <i
+              className="navbar__back-to-home material-icons"
               onClick={() => {
                 this.handleGoBack();
               }}
             >
-              voltar
-            </span>
+              arrow_back
+            </i>
             <h4 className="navbar__company-name">{enterprise_name}</h4>
           </div>
         )}

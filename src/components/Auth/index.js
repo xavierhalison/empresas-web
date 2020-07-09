@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import "./style.css";
 
+import Spinner from "../Spinner";
+
 import logo from "../../assets/logo-home.png";
 import mail from "../../assets/ic-email.svg";
 import locker from "../../assets/ic-cadeado.svg";
@@ -29,7 +31,7 @@ class Auth extends React.Component {
 
     return (
       <div className="auth">
-        {showLoading && <div>loading</div>}
+        {showLoading && <Spinner />}
 
         <img className="auth__logo" src={logo} alt="logo" />
         <h3 className="auth__welcome">Bem vindo ao empresas</h3>
