@@ -2,6 +2,7 @@ import {
   LOAD_COMPANIES,
   SEARCH_COMPANY,
   SELECT_COMPANY,
+  BACK_TO_HOME,
 } from "../actions/types";
 
 const initialState = {
@@ -39,6 +40,13 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         selectedCompany: { ...company },
         showCompanyScreen: true,
+      };
+    }
+    case BACK_TO_HOME: {
+      return {
+        ...state,
+        selectedCompany: initialState.selectedCompany,
+        showCompanyScreen: false,
       };
     }
     default:

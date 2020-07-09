@@ -1,4 +1,9 @@
-import { LOAD_COMPANIES, SEARCH_COMPANY, SELECT_COMPANY } from "./types";
+import {
+  LOAD_COMPANIES,
+  SEARCH_COMPANY,
+  SELECT_COMPANY,
+  BACK_TO_HOME,
+} from "./types";
 
 export const loadCompanies = (companies) => ({
   type: LOAD_COMPANIES,
@@ -19,4 +24,8 @@ export const selectCompany = (company) => ({
   payload: {
     company: company,
   },
+});
+
+export const backToHome = () => ({
+  type: BACK_TO_HOME,
 });

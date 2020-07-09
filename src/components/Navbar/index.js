@@ -4,7 +4,7 @@ import searchIcon from "../../assets/ic-search-copy.png";
 import "./style.css";
 import { connect } from "react-redux";
 import { toggleSearchBar } from "../../redux/actions/homeActions";
-import { searchCompany } from "../../redux/actions/companyActions";
+import { searchCompany, backToHome } from "../../redux/actions/companyActions";
 
 class Navbar extends React.Component {
   handleSearch = (e) => {
@@ -13,7 +13,10 @@ class Navbar extends React.Component {
     searchCompany(str);
   };
 
-  handleGoBack = () => {};
+  handleGoBack = () => {
+    const { backToHome } = this.props;
+    backToHome();
+  };
 
   render() {
     const {
@@ -52,7 +55,14 @@ class Navbar extends React.Component {
         )}
         {showCompanyScreen && (
           <div className="navbar__company">
-            <span className="navbar__back-to-home">voltar</span>
+            <span
+              className="navbar__back-to-home"
+              onClick={() => {
+                this.handleGoBack();
+              }}
+            >
+              voltar
+            </span>
             <h4 className="navbar__company-name">{enterprise_name}</h4>
           </div>
         )}
@@ -74,6 +84,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     toggleSearchBar: () => dispatch(toggleSearchBar()),
     searchCompany: (str) => dispatch(searchCompany(str)),
+    backToHome: () => dispatch(backToHome()),
   };
 };
 
