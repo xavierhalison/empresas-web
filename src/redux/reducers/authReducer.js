@@ -2,9 +2,7 @@ import { STORE_AUTH, SIGNIN_ERROR, TOGGLE_LOADING } from "../actions/types";
 
 const initialState = {
   isLogged: false,
-  accessToken: "",
-  client: "",
-  uid: "",
+  credentials: { accessToken: "", client: "", uid: "" },
   signInFailed: false,
   errorMessage: "",
   showLoading: false,
@@ -18,9 +16,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLogged: true,
-        accessToken: accessToken,
-        client: client,
-        uid: uid,
+        credentials: { accessToken: accessToken, client: client, uid: uid },
       };
 
     case SIGNIN_ERROR:

@@ -8,11 +8,11 @@ import { getCompanies, getCompany } from "../../services/company";
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    getCompanies();
+    getCompanies(this.props.credentials);
   }
 
   handleCompanySelection(id) {
-    getCompany(id);
+    getCompany(id, this.props.credentials);
   }
 
   render() {
@@ -59,11 +59,12 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { company, home } = state;
+  const { company, home, auth } = state;
   return {
     searchResults: company.filteredCompanies,
     onSearch: home.showSearchBar,
     queryLength: company.queryLength,
+    credentials: auth.credentials,
   };
 };
 

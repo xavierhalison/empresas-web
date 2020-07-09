@@ -4,16 +4,13 @@ import store from "../redux/store";
 
 const BASE_URL = "https://empresas.ioasys.com.br/api/v1";
 
-const state = store.getState();
-const { accessToken, client, uid } = state.auth;
+export const getCompanies = (credentials) => {
+  const params = {
+    "access-token": credentials.accessToken,
+    client: credentials.client,
+    uid: credentials.uid,
+  };
 
-const params = {
-  "access-token": accessToken,
-  client: client,
-  uid: uid,
-};
-
-export const getCompanies = () => {
   axios
     .get(`${BASE_URL}/enterprises`, { params })
     .then((res) => JSON.parse(res.request.response))
@@ -21,7 +18,13 @@ export const getCompanies = () => {
     .catch((err) => console.error(err));
 };
 
-export const getCompany = (id) => {
+export const getCompany = (id, credentials) => {
+  const params = {
+    "access-token": credentials.accessToken,
+    client: credentials.client,
+    uid: credentials.uid,
+  };
+
   axios
     .get(`${BASE_URL}/enterprises/${id}`, { params })
     .then((res) => JSON.parse(res.request.response))
