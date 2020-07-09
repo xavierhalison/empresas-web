@@ -47,14 +47,6 @@
   position: relative;
 }
 
-.auth__icon {
-  width: 13px;
-  height: 13px;
-  position: relative;
-  left: 22px;
-  top: 11px;
-}
-
 .auth__field {
   align-self: center;
   background-color: transparent;
@@ -63,6 +55,15 @@
   border-bottom: 1px solid #383743;
   font-size: 9px;
   padding: 0 0 3.9px 22.7px;
+  width: 100%;
+}
+
+.auth__icon {
+  width: 13px;
+  height: 13px;
+  position: relative;
+  left: 3px;
+  top: 11px;
 }
 
 .auth__field--mail {
@@ -82,7 +83,7 @@
 }
 
 .auth__error {
-  font-size: 6.1px;
+  font-size: 8.1px;
   color: #ff0f44;
   margin: 10px;
 }
@@ -96,6 +97,82 @@
   font-size: 8px;
   text-align: center;
   color: white;
-  right: 25px;
+  right: 3px;
   top: 10px;
+}
+
+@media screen and (min-width: 415px) {
+  .auth__logo {
+    width: 247.5px;
+  }
+  .auth__welcome {
+    width: 200px;
+    font-size: 15px;
+    margin-bottom: 20.3px;
+  }
+  .auth__text {
+    font-size: 12px;
+    width: 200.9px;
+  }
+  .auth__single-field {
+    width: 250.5px;
+  }
+  .auth__field {
+    font-size: 14px;
+    padding: 0 0 3.9px 32.7px;
+  }
+  .auth__icon {
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 16px;
+  }
+  .auth__field--mail {
+    margin-bottom: 10.3px;
+  }
+  .auth__submit {
+    width: 182px;
+    height: 36.4px;
+    font-size: 12px;
+  }
+  .auth__error {
+    font-size: 12.1px;
+    margin: 15px;
+  }
+  .auth__error-tip {
+    width: 14.5px;
+    height: 15px;
+    font-size: 12px;
+    top: 18px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .auth__logo {
+    width: 260.5px;
+  }
+  .auth__welcome {
+    width: 250px;
+    font-size: 18px;
+    margin-bottom: 20.3px;
+  }
+  .auth__text {
+    font-size: 15px;
+    width: 250.9px;
+  }
+  .auth__single-field {
+    width: 270.5px;
+  }
+  .auth__field {
+    font-size: 16px;
+  }
+  .auth__submit {
+    width: 200px;
+    height: 40.4px;
+    font-size: 15px;
+  }
+  .auth__error {
+    font-size: 14.1px;
+    margin: 18px;
+  }
 }
