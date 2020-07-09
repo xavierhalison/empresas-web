@@ -1,8 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import "./style.css";
+
 import logo from "../../assets/logo-nav.png";
 import searchIcon from "../../assets/ic-search-copy.png";
-import "./style.css";
-import { connect } from "react-redux";
+
 import { toggleSearchBar } from "../../redux/actions/homeActions";
 import { searchCompany, backToHome } from "../../redux/actions/companyActions";
 
@@ -10,11 +13,13 @@ class Navbar extends React.Component {
   handleSearch = (e) => {
     const str = e.target.value;
     const { searchCompany } = this.props;
+
     searchCompany(str);
   };
 
   handleGoBack = () => {
     const { backToHome } = this.props;
+
     backToHome();
   };
 
@@ -25,7 +30,9 @@ class Navbar extends React.Component {
       showCompanyScreen,
       company,
     } = this.props;
+
     const { enterprise_name } = company;
+
     return (
       <div className="navbar">
         {!showSearchBar && !showCompanyScreen && (

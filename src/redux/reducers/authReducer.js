@@ -12,7 +12,6 @@ const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case STORE_AUTH:
       const { accessToken, client, uid } = action.payload;
-
       return {
         ...state,
         isLogged: true,
@@ -21,7 +20,6 @@ const authReducer = (state = initialState, action) => {
 
     case SIGNIN_ERROR:
       const { errorMessage } = action.payload;
-
       return { ...state, signInFailed: true, errorMessage: errorMessage };
 
     case TOGGLE_LOADING:

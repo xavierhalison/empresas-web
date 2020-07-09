@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 
 import "./style.css";
 
-import { getCompanies, getCompany } from "../../services/company";
+import { getCompanies, getCompany } from "../../services/companyService";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
+
     getCompanies(this.props.credentials);
   }
 
@@ -17,6 +18,7 @@ class Home extends React.Component {
 
   render() {
     const { onSearch, searchResults, queryLength } = this.props;
+
     return (
       <div className="content">
         {!onSearch && (
@@ -24,7 +26,7 @@ class Home extends React.Component {
             Clique na busca para iniciar
           </span>
         )}
-        {searchResults.length > 0 && (
+        {onSearch && searchResults.length > 0 && (
           <div className="content__list">
             {searchResults.map((company) => {
               const { enterprise_name, country, id } = company;
@@ -59,20 +61,14 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { company, home, auth } = state;
+  const { auth, company, home } = state;
+
   return {
-    searchResults: company.filteredCompanies,
-    onSearch: home.showSearchBar,
-    queryLength: company.queryLength,
     credentials: auth.credentials,
+    searchResults: company.filteredCompanies,
+    queryLength: company.queryLength,
+    onSearch: home.showSearchBar,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // goToCompanyScreen: (name, img, text) =>
-    //   dispatch(goToCompanyScreen(name, img, text)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, null)(Home);
