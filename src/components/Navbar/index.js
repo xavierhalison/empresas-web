@@ -3,13 +3,14 @@ import logo from "../../assets/logo-nav.png";
 import searchIcon from "../../assets/ic-search-copy.png";
 import "./style.css";
 import { connect } from "react-redux";
-import { toggleSearchBar, searchString } from "../../redux/actions/homeActions";
+import { toggleSearchBar } from "../../redux/actions/homeActions";
+import { searchCompany } from "../../redux/actions/companyActions";
 
 class Navbar extends React.Component {
   handleSearch = (e) => {
     const str = e.target.value;
-    const { searchString, searchResults } = this.props;
-    searchString(str);
+    const { searchCompany } = this.props;
+    searchCompany(str);
   };
 
   render() {
@@ -54,7 +55,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     toggleSearchBar: () => dispatch(toggleSearchBar()),
-    searchString: (str) => dispatch(searchString(str)),
+    searchCompany: (str) => dispatch(searchCompany(str)),
   };
 };
 

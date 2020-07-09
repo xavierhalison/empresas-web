@@ -1,28 +1,14 @@
-import {
-  TOGGLE_SEARCH_BAR,
-  SEARCH_STRING,
-  GO_TO_COMPANY_SCREEN,
-} from "../actions/types";
+import { TOGGLE_SEARCH_BAR, GO_TO_COMPANY_SCREEN } from "../actions/types";
 
 const initialState = {
   showSearchBar: false,
-  searchResults: [],
   showCompanyScreen: false,
-  company: {},
 };
 
 const homeReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_SEARCH_BAR:
       return { ...state, showSearchBar: !state.showSearchBar };
-    case SEARCH_STRING:
-      let res = [];
-      if (action.payload.str === "") {
-        res = [];
-      } else {
-        res = ["teste"];
-      }
-      return { ...state, searchResults: res };
     case GO_TO_COMPANY_SCREEN:
       return {
         ...state,
