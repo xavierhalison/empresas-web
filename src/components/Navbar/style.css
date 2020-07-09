@@ -42,3 +42,26 @@
 .navbar__search-bar::placeholder {
   color: #991237;
 }
+
+.navbar__company {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.navbar__company-name {
+  color: white;
+  text-transform: uppercase;
+  align-self: flex-end;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.navbar__back-to-home {
+  color: white;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin: 0 34px 17px 27.5px;
+  align-self: flex-end;
+  margin-bottom: 17px;
+}

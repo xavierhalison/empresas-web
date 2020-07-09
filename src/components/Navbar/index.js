@@ -13,14 +13,22 @@ class Navbar extends React.Component {
     searchCompany(str);
   };
 
+  handleGoBack = () => {};
+
   render() {
-    const { toggleSearchBar, showSearchBar } = this.props;
+    const {
+      toggleSearchBar,
+      showSearchBar,
+      showCompanyScreen,
+      company,
+    } = this.props;
+    const { enterprise_name } = company;
     return (
       <div className="navbar">
-        {!showSearchBar && (
+        {!showSearchBar && !showCompanyScreen && (
           <img className="navbar__logo" src={logo} alt="Logo da ioasys" />
         )}
-        {showSearchBar && (
+        {showSearchBar && !showCompanyScreen && (
           <input
             className="navbar__search-bar"
             placeholder="Pesquisar"
@@ -30,25 +38,35 @@ class Navbar extends React.Component {
             }}
           />
         )}
-        <img
-          className={`navbar__search-icon navbar__search-icon--${
-            showSearchBar ? "align-left" : "align-right"
-          }`}
-          src={searchIcon}
-          alt="pesquisar"
-          onClick={() => {
-            toggleSearchBar();
-          }}
-        />
+        {!showCompanyScreen && (
+          <img
+            className={`navbar__search-icon navbar__search-icon--${
+              showSearchBar ? "align-left" : "align-right"
+            }`}
+            src={searchIcon}
+            alt="pesquisar"
+            onClick={() => {
+              toggleSearchBar();
+            }}
+          />
+        )}
+        {showCompanyScreen && (
+          <div className="navbar__company">
+            <span className="navbar__back-to-home">voltar</span>
+            <h4 className="navbar__company-name">{enterprise_name}</h4>
+          </div>
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  const { home } = state;
+  const { home, company } = state;
   return {
     showSearchBar: home.showSearchBar,
+    showCompanyScreen: company.showCompanyScreen,
+    company: company.selectedCompany,
   };
 };
 
