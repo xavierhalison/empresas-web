@@ -11,6 +11,8 @@
   border-radius: 2.4px;
   padding: 24px 37.5px 0 36.5px;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .card__img {
@@ -30,4 +32,30 @@
 .card__text {
   font-size: 17px;
   color: #8d8c8c;
+}
+
+@media screen and (min-width: 415px) {
+  .card__img {
+    width: 300px;
+    height: 200.5px;
+    font-size: 60px;
+    align-self: center;
+    font-size: 80px;
+  }
+
+  .card__text {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .card__img {
+    width: 500px;
+    height: 300.5px;
+    font-size: 100px;
+  }
+
+  .card__text {
+    font-size: 24px;
+  }
 }
